@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 
 //if a DB by this name does NOT exist before running it the first time then this will create that DB
-mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`,{
+mongoose.connect(`mongodb://127.0.0.1/${process.env.DB_NAME}`,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

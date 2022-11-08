@@ -1,5 +1,6 @@
 //in this order is ideal, dont move things around
 require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
@@ -21,7 +22,10 @@ app.use(cors({
 
 app.use(cookieParser())
 
-require("./config/mongoose.config")
-require("./routes/computer.route")(app)
+require("./config/mongoose.config");
+// require("./routes/computer.route")(app);
 
-app.listen(process.env.MY_PORT, () => console.log(`You are connected to ${process.env.MY_PORT}`))
+//added for user controller setup
+require("./routes/user.route")(app);
+
+app.listen(process.env.MY_PORT, () => console.log(`You are connected to ${process.env.MY_PORT}`));
