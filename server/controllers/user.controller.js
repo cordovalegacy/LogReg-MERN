@@ -90,11 +90,14 @@ module.exports = {
 
     getLoggedInUser: (req, res) => {
 
-        const decodedJWT = jwt.decode(req.cookies.userToken, {
-            complete: true
-        })
+//this commented out section is directly tied to the authenticate middleware
+//in authenticate we create "req.jwtpayload = payload" (this is the decode process)
+//our User.findOne now is tied directly to the authenticate payload
+        // const decodedJWT = jwt.decode(req.cookies.userToken, {
+        //     complete: true
+        // })
 
-        User.findOne({ _id: decodedJWT.payload.id })
+        User.findOne({ _id: req.jwtpayload.id })
             .then((user) => {
                 console.log(user);
                 res.json(user)

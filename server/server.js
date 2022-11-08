@@ -17,7 +17,8 @@ app.use(express.urlencoded({extended:true}))
 //taking cors away will result in cors errors while attempting your axios calls
 //this security feature is built into the browser
 app.use(cors({
-    origin: "http://localhost:3000"
+    origin: "http://localhost:3000",
+    credentials: true
 }))
 
 app.use(cookieParser())
@@ -29,4 +30,4 @@ require("./routes/custom.route")(app);
 //added for user controller setup
 require("./routes/user.route")(app);
 
-app.listen(process.env.MY_PORT, () => console.log(`You are connected to ${process.env.MY_PORT}`));
+app.listen(process.env.MY_PORT, () => console.log(`You are connected to port ${process.env.MY_PORT}`));
