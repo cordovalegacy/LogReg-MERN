@@ -23,7 +23,7 @@ app.use(cors({
 app.use(cookieParser())
 
 require("./config/mongoose.config");
-// require("./routes/computer.route")(app);
+require("./routes/computer.route")(app);
 
 //added for user controller setup
 require("./routes/user.route")(app);
